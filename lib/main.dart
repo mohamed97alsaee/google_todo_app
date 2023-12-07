@@ -1,5 +1,6 @@
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:google_todo_app/providers/tasks_provider.dart';
 import 'package:google_todo_app/screens/login_screen.dart';
 
 import './screens/home_screen.dart';
@@ -31,6 +32,7 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider<AuthProvider>(create: (_) => AuthProvider()),
+        ChangeNotifierProvider<TasksProvider>(create: (_) => TasksProvider()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

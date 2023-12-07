@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/http.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'dart:io';
 import 'dart:convert';
@@ -10,7 +11,7 @@ import '../helpers/consts.dart';
 
 class Api {
   Future<Response> get(String url, Map body) async {
-    // SharedPreferences prefs = await SharedPreferences.getInstance();
+    SharedPreferences prefs = await SharedPreferences.getInstance();
 
     // String? localCode = prefs.getString('langCode');
 
@@ -24,7 +25,7 @@ class Api {
           //   :
           '$baseUrl$url'),
       headers: {
-        // HttpHeaders.authorizationHeader: "Bearer ${prefs.getString("token")}",
+        HttpHeaders.authorizationHeader: "Bearer ${prefs.getString("token")}",
         'Accept': "application/json",
         'content-type': 'application/json',
       },
@@ -42,7 +43,7 @@ class Api {
     String url,
     Map body,
   ) async {
-    // SharedPreferences prefs = await SharedPreferences.getInstance();
+    SharedPreferences prefs = await SharedPreferences.getInstance();
     // String? localCode = prefs.getString('langCode');
 
     if (kDebugMode) {
@@ -51,7 +52,7 @@ class Api {
     }
     Response response = await http
         .post(Uri.parse('$baseUrl$url'), body: jsonEncode(body), headers: {
-      // HttpHeaders.authorizationHeader: "Bearer ${prefs.getString("token")}",
+      HttpHeaders.authorizationHeader: "Bearer ${prefs.getString("token")}",
       'Accept': "application/json",
       'content-type': 'application/json',
     });
@@ -67,7 +68,7 @@ class Api {
     String url,
     Map body,
   ) async {
-    // SharedPreferences prefs = await SharedPreferences.getInstance();
+    SharedPreferences prefs = await SharedPreferences.getInstance();
     // String? localCode = prefs.getString('langCode');
 
     if (kDebugMode) {
@@ -75,7 +76,7 @@ class Api {
     }
     Response response = await http
         .put(Uri.parse('$baseUrl$url'), body: jsonEncode(body), headers: {
-      // HttpHeaders.authorizationHeader: "Bearer ${prefs.getString("token")}",
+      HttpHeaders.authorizationHeader: "Bearer ${prefs.getString("token")}",
       'Accept': "application/json",
       'content-type': 'application/json',
     });
@@ -91,7 +92,7 @@ class Api {
     String url,
     Map body,
   ) async {
-    // SharedPreferences prefs = await SharedPreferences.getInstance();
+    SharedPreferences prefs = await SharedPreferences.getInstance();
     // String? localCode = prefs.getString('langCode');
 
     if (kDebugMode) {
@@ -99,7 +100,7 @@ class Api {
     }
     Response response = await http
         .delete(Uri.parse('$baseUrl$url'), body: jsonEncode(body), headers: {
-      // HttpHeaders.authorizationHeader: "Bearer ${prefs.getString("token")}",
+      HttpHeaders.authorizationHeader: "Bearer ${prefs.getString("token")}",
       'Accept': "application/json",
       'content-type': 'application/json',
     });

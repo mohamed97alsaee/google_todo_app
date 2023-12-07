@@ -79,13 +79,6 @@ class AuthProvider with ChangeNotifier {
       }
     }
 
-    if (response.statusCode == 401) {
-      _status = Status.unauthenticated;
-
-      notifyListeners();
-      return [false, apiResponse['error']];
-    }
-
     _status = Status.unauthenticated;
 
     notifyListeners();
