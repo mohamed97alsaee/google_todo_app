@@ -23,4 +23,4 @@ const Color successColor = Color(0xFF2ecc71);
 
 // ----------------------------------- API CONSTS -----------------------------------
 
-String baseUrl = 'http://173.212.208.190:882/api';
+String baseUrl = 'http://todo.kudo.ly/api';
