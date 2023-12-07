@@ -54,4 +54,14 @@ class TasksProvider with ChangeNotifier {
     });
     return null;
   }
+
+  Future<List> addNewTask(Map body) async {
+    final response = await api.post("/user/tasks", body);
+    if (response.statusCode == 200) {
+      getTasks();
+      return [true, "Task Added Successfully"];
+    } else {
+      return [false, json.decode(response.body)['message']];
+    }
+  }
 }

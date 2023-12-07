@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_todo_app/helpers/consts.dart';
 import 'package:google_todo_app/providers/auth_provider.dart';
 import 'package:google_todo_app/providers/tasks_provider.dart';
+import 'package:google_todo_app/widgets/adding_task_dialog.dart';
 import 'package:google_todo_app/widgets/task_card.dart';
 import 'package:provider/provider.dart';
 import 'package:shimmer/shimmer.dart';
@@ -26,7 +27,13 @@ class _HomeScreenState extends State<HomeScreen> {
     return Consumer<TasksProvider>(builder: (context, tasksConsumer, child) {
       return Scaffold(
           floatingActionButton: FloatingActionButton(
-            onPressed: () {},
+            onPressed: () {
+              showDialog(
+                  context: context,
+                  builder: (context) {
+                    return AddingTaskDialog();
+                  });
+            },
             child: Icon(Icons.add),
           ),
           appBar: AppBar(title: Text("GDG Teamz"), actions: [
@@ -83,19 +90,6 @@ class _HomeScreenState extends State<HomeScreen> {
                             const Padding(
                               padding: EdgeInsets.symmetric(vertical: 8.0),
                             ),
-                            // Container(
-                            //   width: double.infinity,
-                            //   height: 8.0,
-                            //   color: Colors.white,
-                            // ),
-                            // const Padding(
-                            //   padding: EdgeInsets.symmetric(vertical: 8.0),
-                            // ),
-                            // Container(
-                            //   width: 40.0,
-                            //   height: 8.0,
-                            //   color: Colors.white,
-                            // ),
                           ],
                         ),
                       ),
